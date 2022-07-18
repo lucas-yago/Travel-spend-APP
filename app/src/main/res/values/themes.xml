@@ -13,4 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="BlueEditText" parent="Theme.GastoViagem">
+        <item name="android:colorAccent">@drawable/draw1</item>
+        <item name="colorControlHighlight">@drawable/draw1</item>
+        <item name="colorControlNormal">@drawable/draw1</item>
+        <item name="colorControlActivated">@drawable/draw1</item>
+    </style>
 </resources>
