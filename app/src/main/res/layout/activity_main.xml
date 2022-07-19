@@ -10,10 +10,16 @@
 
 
     <EditText
+        android:id="@+id/etDistancia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="@string/distance" />
+        android:autofillHints="@string/distance"
+        android:hint="@string/distance"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        android:theme="@style/BlueEditText" />
 
     <TextView
         android:layout_width="match_parent"
@@ -23,10 +29,15 @@
         android:text="@string/total_Km" />
 
     <EditText
+        android:id="@+id/etPreco"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="@string/price" />
+        android:autofillHints="@string/price"
+        android:hint="@string/price"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:theme="@style/BlueEditText" />
 
     <TextView
         android:layout_width="match_parent"
@@ -36,10 +47,16 @@
         android:text="@string/price_Per_Liter" />
 
     <EditText
+        android:id="@+id/etAutonomia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="@string/autonomy" />
+        android:autofillHints="@string/autonomy"
+        android:hint="@string/autonomy"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        android:theme="@style/BlueEditText" />
 
     <TextView
         android:layout_width="match_parent"
