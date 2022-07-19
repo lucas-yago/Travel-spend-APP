@@ -54,6 +54,7 @@
         android:textSize="20sp" />
 
     <TextView
+        android:id="@+id/tvTotalValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -64,6 +65,7 @@
         android:textSize="38sp" />
 
     <Button
+        android:id="@+id/btnButtonCalculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
