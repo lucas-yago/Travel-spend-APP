@@ -3,6 +3,7 @@ package com.lucasyago.gastoviagem
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lucasyago.gastoviagem.databinding.ActivityMainBinding
 
@@ -23,15 +24,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun isValid(): Boolean {
+        return (
+                binding.etDistance.text.toString() != ""
+                && binding.etDistance.text.toString().toFloat() > 0f
+                && binding.etPrice.text.toString() != ""
+                && binding.etPrice.text.toString().toFloat() > 0f
+                && binding.etAutonomy.text.toString() != ""
+                && binding.etAutonomy.text.toString().toFloat() > 0f
+        )
+
+    }
+
     @SuppressLint("SetTextI18n")
     private fun calculate() {
+        if (isValid()) {
 
-        val distance = binding.etDistance.text.toString().toFloat()
-        val price = binding.etPrice.text.toString().toFloat()
-        val autonomy = binding.etAutonomy.text.toString().toFloat()
+            val distance = binding.etDistance.text.toString().toFloat()
+            val price = binding.etPrice.text.toString().toFloat()
+            val autonomy = binding.etAutonomy.text.toString().toFloat()
 
-        val totalValue = (distance * price) / autonomy
-        binding.tvTotalValue.text = "R$ %.2f".format(totalValue)
+            val totalValue = (distance * price) / autonomy
+            binding.tvTotalValue.text = "R$ %.2f".format(totalValue)
+        } else {
+            Toast.makeText(this, R.string.Validation_fill_all_fields, Toast.LENGTH_SHORT).show()
+        }
 
     }
 
