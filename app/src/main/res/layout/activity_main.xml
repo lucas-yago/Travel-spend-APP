@@ -1,77 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    >
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.lucasyago.gastoviagem.viewmodel.MainViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/etDistance"
-        style="@style/EditText"
-        android:layout_marginTop="16dp"
-        android:autofillHints="@string/distance"
-        android:hint="@string/distance"
-        android:inputType="numberDecimal"
-        android:theme="@style/theme.EditText" />
-
-    <TextView
-        style="@style/textViewSubtitle"
-        android:text="@string/total_Km" />
-
-    <EditText
-        android:id="@+id/etPrice"
-        style="@style/EditText"
-        android:autofillHints="@string/price"
-        android:hint="@string/price"
-        android:inputType="numberDecimal"
-        android:theme="@style/theme.EditText" />
-
-    <TextView
-        style="@style/textViewSubtitle"
-        android:text="@string/price_Per_Liter" />
-
-    <EditText
-        android:id="@+id/etAutonomy"
-        style="@style/EditText"
-        android:autofillHints="@string/autonomy"
-        android:hint="@string/autonomy"
-        android:inputType="numberDecimal"
-        android:theme="@style/theme.EditText" />
-
-    <TextView
-        style="@style/textViewSubtitle"
-        android:text="@string/km_Per_Liter" />
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:gravity="center"
-        android:text="@string/msg_total_spend"
-        android:textAllCaps="true"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/tvTotalValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/total_spend"
-        android:textAllCaps="true"
-        android:textColor="@color/purple_700"
-        android:textSize="38sp" />
-
-    <Button
-        android:id="@+id/btnButtonCalculate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="16dp"
-        android:text="@string/calculate"
-        android:textSize="18sp" />
+        tools:context=".MainActivity">
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etDistance"
+            style="@style/EditText"
+            android:layout_marginTop="16dp"
+            android:autofillHints="@string/distance"
+            android:hint="@string/distance"
+            android:text="@={viewmodel.distance}"
+            android:inputType="numberDecimal"
+            android:theme="@style/theme.EditText" />
+
+        <TextView
+            style="@style/textViewSubtitle"
+            android:text="string/total_Km" />
+
+        <EditText
+            android:id="@+id/etPrice"
+            style="@style/EditText"
+            android:autofillHints="@string/price"
+            android:hint="@string/price"
+            android:text="@={viewmodel.price}"
+            android:inputType="numberDecimal"
+            android:theme="@style/theme.EditText" />
+
+        <TextView
+            style="@style/textViewSubtitle"
+            android:text="@string/price_Per_Liter" />
+
+        <EditText
+            android:id="@+id/etAutonomy"
+            style="@style/EditText"
+            android:autofillHints="@string/autonomy"
+            android:hint="@string/autonomy"
+            android:text="@={viewmodel.autonomy}"
+            android:inputType="numberDecimal"
+            android:theme="@style/theme.EditText" />
+
+        <TextView
+            style="@style/textViewSubtitle"
+            android:text="@string/km_Per_Liter" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:gravity="center"
+            android:text="@string/msg_total_spend"
+            android:textAllCaps="true"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvTotalValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@={viewmodel.totalValue}"
+            android:textAllCaps="true"
+            android:textColor="@color/purple_700"
+            android:textSize="38sp" />
+
+        <Button
+            android:id="@+id/btnButtonCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:padding="16dp"
+            android:text="@string/calculate"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</layout>
+
 

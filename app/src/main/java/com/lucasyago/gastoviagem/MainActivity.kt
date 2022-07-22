@@ -5,51 +5,34 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.lucasyago.gastoviagem.databinding.ActivityMainBinding
+import com.lucasyago.gastoviagem.util.toast
+import com.lucasyago.gastoviagem.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
 
         binding.btnButtonCalculate.setOnClickListener(this)
+
 
     }
 
     override fun onClick(view: View) {
         if (view.id == R.id.btnButtonCalculate) {
-            calculate()
+            toast("Testando modal")
+            viewModel.calculate()
         }
     }
-
-    private fun isValid(): Boolean {
-        return (
-                binding.etDistance.text.toString() != ""
-                && binding.etDistance.text.toString().toFloat() > 0f
-                && binding.etPrice.text.toString() != ""
-                && binding.etPrice.text.toString().toFloat() > 0f
-                && binding.etAutonomy.text.toString() != ""
-                && binding.etAutonomy.text.toString().toFloat() > 0f
-        )
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun calculate() {
-        if (isValid()) {
-
-            val distance = binding.etDistance.text.toString().toFloat()
-            val price = binding.etPrice.text.toString().toFloat()
-            val autonomy = binding.etAutonomy.text.toString().toFloat()
-
-            val totalValue = (distance * price) / autonomy
-            binding.tvTotalValue.text = "R$ %.2f".format(totalValue)
-        } else {
-            Toast.makeText(this, R.string.Validation_fill_all_fields, Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
 }
